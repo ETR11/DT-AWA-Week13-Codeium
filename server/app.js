@@ -3,6 +3,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
+if (process.env.NODE_ENV === 'development') {
+  var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+  };
+  app.use(cors(corsOptions));
+}
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
